@@ -1,7 +1,7 @@
 import { CheckCircle, Image } from "lucide-react";
 import type { ProductType } from "@/type";
 import { Skeleton } from "../common/skeleton";
-import { getImageUrl, slugify } from "@/helper";
+import { slugify } from "@/helper";
 import { Link } from "react-router";
 import { CartButton } from "../common/cart-button";
 import { WishlistButton } from "../common/wishlist-button";
@@ -116,12 +116,8 @@ export const ProductSuccess = ({
       </div>
       <div className="flex items-start justify-center gap-2">
         <div className="size-16 relative overflow-hidden rounded-lg bg-cover bg-center border border-border">
-          <img
-            src={
-              product?.thumbnail_image
-                ? getImageUrl(product?.thumbnail_image)
-                : "/placeholder.svg"
-            }
+          <OptimizedImage
+            src={product?.thumbnail_image || ""}
             alt={product?.name}
             className="w-full h-full object-cover relative"
           />
@@ -146,7 +142,7 @@ export const ProductSuccess = ({
         <div className="flex-1 w-full">
           <Link to="/checkout">
             <Button variant="default" className="w-full" onClick={onHideModal}>
-              {"Checkout"}
+              Order now
             </Button>
           </Link>
         </div>
