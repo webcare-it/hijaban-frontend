@@ -1,4 +1,4 @@
-export const BACKEND_URL = `https://backend.sellvian.com`;
+export const BACKEND_URL = `https://backend.hijaban.com`;
 
 /** DON'T TOUCH HERE */
 export const BASE_URL = `${BACKEND_URL}/api/v2`;
