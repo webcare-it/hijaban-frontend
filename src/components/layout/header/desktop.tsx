@@ -8,12 +8,14 @@ import type { RootStateType } from "@/redux/store";
 import { MegaMenu } from "./mega-menu";
 import { Logo } from "./logo";
 import { useMemo } from "react";
+import { useCopyToClipboard } from "@/hooks/useCopy";
 export const HeaderDesktop = ({
   isShowMegaMenu,
 }: {
   isShowMegaMenu: boolean;
 }) => {
   const pathname = useLocation();
+  const { copyToClipboard } = useCopyToClipboard();
   const cart = useSelector((state: RootStateType) => state.cart);
   const wishlist = useSelector((state: RootStateType) => state.wishlist);
 
@@ -39,7 +41,10 @@ export const HeaderDesktop = ({
 
           <div className="flex items-center gap-3 w-full md:w-auto justify-end">
             <a href="tel:01781359306" title="Call Us">
-              <Button variant="ghost" className="hover:text-primary">
+              <Button
+                variant="ghost"
+                className="hover:text-primary"
+                onClick={() => copyToClipboard("01781359306")}>
                 <PhoneCall className="h-6 w-6" />
                 01781359306
               </Button>
