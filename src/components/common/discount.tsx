@@ -5,9 +5,10 @@ import { hasDiscount } from "@/helper";
 interface Props {
   type: "CARD" | "DETAILS" | "INFO";
   product: ProductType | ProductDetailsType;
+  productType?: string;
 }
 
-export const Discount = ({ product, type }: Props) => {
+export const Discount = ({ product, type, productType }: Props) => {
   const discount = hasDiscount(product?.main_price, product?.stroked_price);
   const isDiscount = discount > 0;
 
@@ -20,6 +21,16 @@ export const Discount = ({ product, type }: Props) => {
           </p>
         )}
       </>
+    );
+  }
+
+  if (type === "CARD" && productType?.trim()) {
+    return (
+      <Badge
+        className={`z-10 top-2 left-2 absolute text-white text-xs font-medium`}
+        variant="destructive">
+        HOT
+      </Badge>
     );
   }
 

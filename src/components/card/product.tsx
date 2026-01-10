@@ -16,16 +16,17 @@ import { Button } from "../ui/button";
 
 interface Props {
   product: ProductType;
+  type?: string;
 }
 
-export const ProductCard = ({ product }: Props) => {
+export const ProductCard = ({ product, type }: Props) => {
   const { modalRef, modalConfig, onHideModal, onShowModal } = useModal();
 
   return (
     <>
       <div className="group relative mt-2 md:mt-0 overflow-hidden rounded-lg border bg-card transition-all hover:scale-105 cursor-pointer duration-300 select-none">
         <WishlistButton product={product} size="DEFAULT" />
-        <Discount product={product} type="CARD" />
+        <Discount product={product} type="CARD" productType={type} />
 
         <Link to={`/products/${product?.id}/${slugify(product?.name)}`}>
           <div className="relative aspect-[16/12] overflow-hidden bg-muted">

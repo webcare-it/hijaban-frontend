@@ -16,6 +16,7 @@ export const BestSellerSection = ({ isLoading, products }: HomePropsType) => {
       }`}>
       <ProductSection
         title={"Best Sellers"}
+        type="BEST_SELLER"
         products={products}
         isLoading={isLoading}
       />
