@@ -6,6 +6,7 @@ import {
   Heart,
   Search,
   ArrowLeft,
+  PhoneCall,
 } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
@@ -17,11 +18,14 @@ import { ActionSearchBar } from "./search";
 import { useState, useEffect, useRef, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { isPathActive } from "@/helper";
+import { Button } from "@/components/ui/button";
+import { useCopyToClipboard } from "@/hooks/useCopy";
 
 export const HeaderMobile = () => {
   const searchInputRef = useRef<HTMLInputElement>(null);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [triggerAnimation, setTriggerAnimation] = useState(false);
+  const { copyToClipboard } = useCopyToClipboard();
 
   const handleSearchClick = () => {
     setIsSearchOpen(true);
@@ -110,6 +114,16 @@ export const HeaderMobile = () => {
               <Logo type="MOBILE" />
             </div>
             <div className="flex justify-end items-center gap-2.5">
+              <a href="tel:01781359306" title="Call Us">
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  onClick={() => copyToClipboard("01781359306")}
+                  className="hover:text-primary">
+                  <PhoneCall className="h-6 w-6" />
+                  <span className="sr-only">Call Us</span>
+                </Button>
+              </a>
               <button
                 onClick={handleSearchClick}
                 className="p-1 hover:bg-accent rounded-md transition-colors">

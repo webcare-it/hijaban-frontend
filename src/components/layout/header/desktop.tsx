@@ -1,4 +1,4 @@
-import { Heart, ShoppingCart } from "lucide-react";
+import { Heart, PhoneCall, ShoppingCart } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ActionSearchBar } from "./search";
@@ -38,6 +38,12 @@ export const HeaderDesktop = ({
           </div>
 
           <div className="flex items-center gap-3 w-full md:w-auto justify-end">
+            <a href="tel:01781359306" title="Call Us">
+              <Button variant="ghost" className="hover:text-primary">
+                <PhoneCall className="h-6 w-6" />
+                01781359306
+              </Button>
+            </a>
             <Link to="/track-order" title="Track Order">
               <Button
                 variant="ghost"
